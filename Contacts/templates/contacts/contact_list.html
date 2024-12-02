@@ -1,32 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>IS Project Record Management</h1>
-<a  href="{% url 'contact_create' %}"class="button">Create a New Record</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>Contact Name</th>
-                    <th>Email</th>
-                    <th>Created Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if contacts %}
-                    {% for contact in contacts %}
-                        <tr>
-                            <td>{{ contact.name }}</td>
-                            <td>{{ contact.email }}</td>
-                            <td>{{ contact.created_time }}</td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="3">No contacts found.</td>
-                    </tr>
-                {% endif %}
-            </tbody>
-        </table>
-        <footer>
-            ©Created by Jackpot Junction
-        </footer>
+<div class="centered-text" style="color: blue;">
+    <h1>IS Project New Record Management</h1>
+</div>
+    <form action="{% url 'contact_form' %}" method="get">
+    <button type="submit">Create a New Contact</button>
+</form>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Contact Name</th>
+      <th>Email</th>
+      <th>Created Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contact_list %}
+    <tr>
+      <td>
+        <a class="icon-link">
+          <i class="bi bi-pencil"></i>
+      </a>
+        &nbsp;
+        <a class="icon-link">
+          <i class="bi bi-trash"></i>
+        </a>
+        &nbsp;
+        {{ contact.name }}
+      </td>
+      <td>
+        {{ contact.email}}
+      </td>
+      <td>
+        {{ contact.created_time}}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr>
+<div class="centered-text" style="color: green;">
+    <h4>&copy; Created by Jackpot Junction</h4>
+</div>
 {% endblock content %} 
