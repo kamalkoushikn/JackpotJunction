@@ -18,7 +18,7 @@
     {% for contact in contact_list %}
     <tr>
       <td>
-        <a class="icon-link"  href="{% url 'contact_detail' contact.pk %}">
+        <a class="btn btn-info" href="{% url 'contact_update' contact.pk %}" role="button">Edit</a>
           <i class="bi bi-pencil"></i>
       </a>
         &nbsp;

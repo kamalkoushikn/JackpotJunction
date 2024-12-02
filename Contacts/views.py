@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from .models import Contact
 from .contact_form import ContactForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 
 # Create your views here.
 class ContactListView(ListView):
@@ -20,3 +20,8 @@ def ContactCreateView(request):
     return render(request, 'contacts/contact_form.html', {'form': form})
 class ContactDetailView(DetailView):
     model = Contact
+
+class ContactUpdateView(UpdateView):
+    model = Contact
+    form_class = ContactForm
+    success_url = reverse_lazy("contact_list")
