@@ -3,7 +3,7 @@
 <div class="centered-text" style="color: blue;">
     <h1>Confirm Delete</h1>
 </div>
-<p>Are you sure you want to delete contact "{{ contact.name }}"?</p>
+<p>Are you sure you want to delete Record "{{ contact.name }}"?</p>
 <form method="post" action="{% url 'contact_delete' contact.id %}">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger" >Delete</button>

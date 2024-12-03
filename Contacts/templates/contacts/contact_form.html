@@ -7,10 +7,30 @@
       <h1>Edit Record</h1>
   {% endif %}
 </div>
-<form method="post">
+{% comment %} <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" />
+  <input type="submit" /> {% endcomment %}
+  <form method="post" style="width: 26rem; align-items: center;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_name">Name</label>
+        {{ form.name.errors }}
+        <input type="text" id="id_name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" name="name" value="{{ form.instance.name }}" required>
+        <div class="invalid-feedback">
+            {{ form.name.errors }}
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="id_email">Email address</label>
+        {{ form.email.errors }}
+        <input type="email" id="id_email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" name="email" value="{{ form.instance.email }}" required>
+        <div class="invalid-feedback">
+            {{ form.email.errors }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 <hr>
