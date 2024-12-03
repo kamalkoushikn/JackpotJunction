@@ -3,7 +3,7 @@
 <div class="centered-text" style="color: blue;">
     <h1>IS Project New Record Management</h1>
 </div>
-    <form action="{% url 'contact_form' %}" method="get">
+    <form action="{% url 'contact_create' %}" method="get">
     <button type="submit">Create a New Contact</button>
 </form>
 <table class="table table-striped">
@@ -22,7 +22,7 @@
           <i class="bi bi-pencil"></i>
       </a>
         &nbsp;
-        <a class="icon-link">
+        <a class="icon-link" href="{% url 'contact_delete' contact.pk %}">
           <i class="bi bi-trash"></i>
         </a>
         &nbsp;
